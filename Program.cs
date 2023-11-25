@@ -6,7 +6,7 @@ namespace Calculadora
     {
         static void Main(string[] args)
         {
-
+            Menu();
         }
 
         static float LeFloat(string mensagem)
@@ -26,6 +26,46 @@ namespace Calculadora
             return numero;
         }
 
+        static short LeShort(string mensagem)
+        {
+            Console.WriteLine(mensagem);
+
+            string? leitura = Console.ReadLine();
+            short numero = 0;
+
+            if (short.TryParse(leitura, out numero))
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("AVISO: O número não foi lido corretamente, considerando como 0.");
+                Console.ResetColor();
+            }
+
+            return numero;
+        }
+
+        static void Menu()
+        {
+            Console.Clear();
+
+            Console.WriteLine("Olá! Qual operação deseja efetuar?");
+            Console.WriteLine("1 - Soma");
+            Console.WriteLine("2 - Subtração");
+            Console.WriteLine("3 - Multiplicação");
+            Console.WriteLine("4 - Divisão");
+            Console.WriteLine();
+
+            short opcao = LeShort("Digite a opção desejada:");
+
+            switch (opcao)
+            {
+                case 1: Soma(); break;
+                case 2: Subtracao(); break;
+                case 3: Multiplicacao(); break;
+                case 4: Divisao(); break;
+                default: Menu(); break;
+            }
+        }
+
         static void Soma()
         {
             Console.Clear();
@@ -38,6 +78,7 @@ namespace Calculadora
             Console.WriteLine($"O resultado da soma é {resultado}.");
             Console.Write("Pressione qualquer tecla para voltar ao menu...");
             Console.ReadKey();
+            Menu();
         }
 
         static void Subtracao()
@@ -52,6 +93,7 @@ namespace Calculadora
             Console.WriteLine($"O resultado da subtração é {resultado}.");
             Console.Write("Pressione qualquer tecla para voltar ao menu...");
             Console.ReadKey();
+            Menu();
         }
 
         static void Multiplicacao()
@@ -66,6 +108,7 @@ namespace Calculadora
             Console.WriteLine($"O resultado da multiplicação é {resultado}.");
             Console.Write("Pressione qualquer tecla para voltar ao menu...");
             Console.ReadKey();
+            Menu();
         }
 
         static void Divisao()
@@ -80,6 +123,7 @@ namespace Calculadora
             Console.WriteLine($"O resultado da divisão é {resultado}.");
             Console.Write("Pressione qualquer tecla para voltar ao menu...");
             Console.ReadKey();
+            Menu();
         }
     }
 }
