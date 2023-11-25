@@ -37,5 +37,19 @@ namespace Calculadora
             Console.Write("Pressione qualquer tecla para voltar ao menu...");
             Console.ReadKey();
         }
+
+        static void Subtracao()
+        {
+            Console.Clear();
+
+            float v1 = LeFloat("Digite o primeiro valor:");
+            float v2 = LeFloat("Digite o segundo valor:");
+
+            float resultado = v1 - v2;
+
+            Console.WriteLine($"O resultado da subtração é {resultado}");
+            Console.Write("Pressione qualquer tecla para voltar ao menu...");
+            Console.ReadKey();
+        }
     }
 }
