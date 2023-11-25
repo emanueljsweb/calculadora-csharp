@@ -18,7 +18,9 @@ namespace Calculadora
 
             if (float.TryParse(leitura, out numero) == false)
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("AVISO: O número não foi lido corretamente, considerando como 0.");
+                Console.ResetColor();
             }
 
             return numero;
