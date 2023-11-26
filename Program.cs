@@ -53,6 +53,8 @@ namespace Calculadora
             Console.WriteLine("3 - Multiplicação");
             Console.WriteLine("4 - Divisão");
             Console.WriteLine("5 - Porcentagem");
+            Console.WriteLine("6 - Fórmula de Bháskara");
+            Console.WriteLine("7 - Sair do Programa");
             Console.WriteLine();
 
             short opcao = LeShort("Digite a opção desejada:");
@@ -64,6 +66,8 @@ namespace Calculadora
                 case 3: Multiplicacao(); break;
                 case 4: Divisao(); break;
                 case 5: Porcentagem(); break;
+                case 6: Bhaskara(); break;
+                case 7: System.Environment.Exit(0); break;
                 default: Menu(); break;
             }
         }
@@ -138,6 +142,35 @@ namespace Calculadora
             float resultado = valor * (porcentagem / 100);
 
             Console.WriteLine($"{porcentagem}% de {valor} é igual a {resultado}.");
+            Console.Write("Pressione qualquer tecla para voltar ao menu...");
+            Console.ReadKey();
+            Menu();
+        }
+
+        static void Bhaskara()
+        {
+            Console.Clear();
+
+            Console.WriteLine("Uma equação do segundo grau apresenta o formato: ax² + bx + c. Em seguida, insira apenas os valores dos parâmetros, isto é, apenas números e sinais (+ e -).");
+            Console.WriteLine();
+
+            float a = LeFloat("Digite o valor de A:");
+            float b = LeFloat("Digite o valor de B:");
+            float c = LeFloat("Digite o valor de C:");
+
+            float delta = (float)Math.Pow(b, 2) - 4 * a * c;
+            float x1 = (float)((b * -1) + Math.Sqrt(delta)) / 2 * a;
+            float x2 = (float)((b * -1) - Math.Sqrt(delta)) / 2 * a;
+
+            string resultado;
+            if (delta > 0)
+                resultado = $"As raízes são {x1} e {x2}, sendo delta igual a {delta}.";
+            else if (delta == 0)
+                resultado = $"A raiz da equação é {x1}, sendo delta igual a {delta}.";
+            else
+                resultado = $"Não existem raízes reais para essa equação, sendo delta igual a {delta}.";
+
+            Console.WriteLine(resultado);
             Console.Write("Pressione qualquer tecla para voltar ao menu...");
             Console.ReadKey();
             Menu();
