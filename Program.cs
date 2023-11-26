@@ -52,6 +52,7 @@ namespace Calculadora
             Console.WriteLine("2 - Subtração");
             Console.WriteLine("3 - Multiplicação");
             Console.WriteLine("4 - Divisão");
+            Console.WriteLine("5 - Porcentagem");
             Console.WriteLine();
 
             short opcao = LeShort("Digite a opção desejada:");
@@ -62,6 +63,7 @@ namespace Calculadora
                 case 2: Subtracao(); break;
                 case 3: Multiplicacao(); break;
                 case 4: Divisao(); break;
+                case 5: Porcentagem(); break;
                 default: Menu(); break;
             }
         }
@@ -121,6 +123,21 @@ namespace Calculadora
             float resultado = v1 / v2;
 
             Console.WriteLine($"O resultado da divisão é {resultado}.");
+            Console.Write("Pressione qualquer tecla para voltar ao menu...");
+            Console.ReadKey();
+            Menu();
+        }
+
+        static void Porcentagem()
+        {
+            Console.Clear();
+
+            float valor = LeFloat("Digite o valor:");
+            float porcentagem = LeFloat("Digite o percentual que você deseja desse valor:");
+
+            float resultado = valor * (porcentagem / 100);
+
+            Console.WriteLine($"{porcentagem}% de {valor} é igual a {resultado}.");
             Console.Write("Pressione qualquer tecla para voltar ao menu...");
             Console.ReadKey();
             Menu();
