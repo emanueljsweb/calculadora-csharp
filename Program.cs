@@ -33,7 +33,7 @@ namespace Calculadora
             string? leitura = Console.ReadLine();
             short numero = 0;
 
-            if (short.TryParse(leitura, out numero))
+            if (short.TryParse(leitura, out numero) == false)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("AVISO: O número não foi lido corretamente, considerando como 0.");
